@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-
+    [SerializeField] private bool spin;
     [SerializeField] private float speed;
 
 
@@ -17,9 +17,16 @@ public class bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * speed);
+        if (spin)
+        {
+            transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * speed, Space.World);
+            transform.Translate(new Vector3(0, 0, 2f) * Time.deltaTime * speed);
+        }
+        else
+        {
+            transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * speed);
+        }
+        
 
 
         

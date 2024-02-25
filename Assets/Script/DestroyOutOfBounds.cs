@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
-
+    private UIManager uiManager;
 
     [SerializeField] private float topBound = 30f;
     [SerializeField] private float botBound = -10f;
@@ -14,6 +14,8 @@ public class DestroyOutOfBounds : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        uiManager = FindObjectOfType<UIManager>();
         
     }
 
@@ -30,6 +32,7 @@ public class DestroyOutOfBounds : MonoBehaviour
             
             Destroy(gameObject);
             Debug.Log("Te han comido por fallar");
+            uiManager.ShowGameOverPanel();
             Time.timeScale = 0f;
         }
         

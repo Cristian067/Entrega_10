@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class DetectCollisions : MonoBehaviour
 {
+
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
+
+        gameManager = FindObjectOfType<GameManager>();
         
     }
 
@@ -18,7 +23,12 @@ public class DetectCollisions : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
-        Destroy(other.gameObject);
+        if (other.gameObject.tag == "Animal")
+        {
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+            gameManager.GetFeed();
+        }
+        
     }
 }

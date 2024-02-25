@@ -12,12 +12,14 @@ public class Player_control : MonoBehaviour
 
     [SerializeField] private GameObject bullet;
 
+    private GameManager gameManager;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = FindObjectOfType<GameManager>();
     }
 
 
@@ -36,6 +38,11 @@ public class Player_control : MonoBehaviour
         {
             Fire();
             
+        }
+
+        if (Input.GetKeyDown("escape"))
+        {
+            gameManager.Pause();
         }
 
 
